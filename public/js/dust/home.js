@@ -1,0 +1,1 @@
+(function(){dust.register("home",body_0);function body_0(chk,ctx){return chk.write("<h1>").reference(ctx.get("title"),ctx,"h").write("</h1><p>Things are going really well here.</p>");}return body_0;})();

@@ -1,0 +1,2 @@
+{"ts":1349658348625,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"lib-cov\n*.seed\n*.log\n*.csv\n*.dat\n*.out\n*.pid\n*.gz\n\npids\nlogs\nresults\n\nnode_modules\nnpm-debug.log"]],"start1":0,"start2":0,"length1":0,"length2":96}]],"length":96}
+{"contributors":[],"silentsave":false,"ts":1349658358123,"patch":[[{"diffs":[[0,"ts\n\n"],[-1,"node_modules\n"],[0,"npm-"]],"start1":66,"start2":66,"length1":21,"length2":8}]],"length":83,"saved":false}

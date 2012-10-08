@@ -1,0 +1,4 @@
+{"ts":1349655555239,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1349655560794,"patch":[[{"diffs":[[1,"Account page for {user}"]],"start1":0,"start2":0,"length1":0,"length2":23}]],"length":23,"saved":false}
+{"ts":1349655599013,"patch":[[{"diffs":[[1,"<h1>{title}</h1>\n\n"],[0,"Account "]],"start1":0,"start2":0,"length1":8,"length2":26}]],"length":41,"saved":false}
+{"ts":1349658329151,"patch":[[{"diffs":[[0,"}</h1>\n\n"],[1,"<p>\n    "],[0,"Account "]],"start1":10,"start2":10,"length1":16,"length2":24},{"diffs":[[0,"r {user}"],[1,"\n</p>"]],"start1":41,"start2":41,"length1":8,"length2":13}]],"length":54,"saved":false}

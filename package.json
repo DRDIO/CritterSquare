@@ -9,6 +9,7 @@
         "mongodb":              "1.1.7",
         "node-foursquare-2":    "0.1.5",
         "consolidate":          "0.4.0",
-        "dustjs-linkedin":      "1.1.0"
+        "dustjs-linkedin":      "1.1.0",
+        "watch":                "0.5.1"
     }
 }

@@ -1,0 +1,6 @@
+{"ts":1349651030917,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"<strong>\n    {user}\n</strong>"]],"start1":0,"start2":0,"length1":0,"length2":29}]],"length":29}
+{"contributors":[],"silentsave":false,"ts":1349654209155,"patch":[[{"diffs":[[0,"  {user}"],[1," "],[0,"\n</stron"]],"start1":11,"start2":11,"length1":16,"length2":17}]],"length":30,"saved":false}
+{"ts":1349654590076,"patch":[[{"diffs":[[0,"  {user}"],[-1," "],[0,"\n</stron"]],"start1":11,"start2":11,"length1":17,"length2":16}]],"length":29,"saved":false}
+{"ts":1349655496705,"patch":[[{"diffs":[[1,"<a href='/account'>Account</a>\n<br />\n\n"],[0,"<strong>"]],"start1":0,"start2":0,"length1":8,"length2":47}]],"length":68,"saved":false}
+{"ts":1349655947622,"patch":[[{"diffs":[[0,"<"],[-1,"a href='/account'>Account</a>\n<br />\n\n<strong>\n    {user}\n</strong"],[1,"h1>{title}</h1>\n\n<ul>\n    <li>\n        <a href='/account'>Account</a>\n    </li>\n</ul"],[0,">"]],"start1":0,"start2":0,"length1":68,"length2":86}]],"length":86,"saved":false}
+{"ts":1349658314562,"patch":[[{"diffs":[[0,">\n\n<"],[-1,"ul"],[1,"p"],[0,">\n    "],[-1,"<li>\n        <a href='/account'>Account</a>\n    </li>\n</ul"],[1,"Things are going really well here.\n</p"],[0,">"]],"start1":15,"start2":15,"length1":71,"length2":50}]],"length":65,"saved":false}

@@ -1,3 +1,5 @@
-<strong>
-    {user}
-</strong>
+<h1>{title}</h1>
+
+<p>
+    Things are going really well here.
+</p>

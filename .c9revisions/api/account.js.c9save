@@ -1,0 +1,2 @@
+{"ts":1349651030941,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"exports.get = function() {\n    return {\n        'title': 'home',\n        'user': 'kevin'\n    };\n};"]],"start1":0,"start2":0,"length1":0,"length2":98}]],"length":98}
+{"contributors":[],"silentsave":false,"ts":1349655550647,"patch":[[{"diffs":[[0,"': '"],[-1,"home"],[1,"account"],[0,"',\n "]],"start1":54,"start2":54,"length1":12,"length2":15}]],"length":101,"saved":false}

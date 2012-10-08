@@ -1,0 +1,1 @@
+{"ts":1349657664084,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"(function(){dust.register(\"home\",body_0);function body_0(chk,ctx){return chk.write(\"<h1>\").reference(ctx.get(\"title\"),ctx,\"h\").write(\"</h1><ul><li><a href='/account'>Account</a></li></ul>\");}return body_0;})();"]],"start1":0,"start2":0,"length1":0,"length2":210}]],"length":210}
