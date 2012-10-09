@@ -1,6 +1,6 @@
-exports.get = function() {
-    return {
+exports.get = function(req, res, fsq) {
+    res.utilrender(req, res, {
         'title': 'account',
         'user': 'kevin'
-    };
+    });
 };

@@ -1,5 +1,14 @@
-<h1>{title}</h1>
+<h1>CritterSquare</h1>
 
 <p>
-    Things are going really well here.
-</p>
+    {?user}
+        Welcome back, {.firstName} {.lastName}
+
+        {#checkins.items}
+            {.venue}
+        {/checkins.items}
+
+    {:else}
+        <a href="/login">Login</a>
+    {/user}
+<p>

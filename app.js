@@ -3,42 +3,92 @@ var express     = require('express')
   , watch       = require('watch')
   , fs          = require('fs')
   , dust        = require('dustjs-linkedin')
+  , foursquare  = require('node-foursquare-2')
+  , requiredir  = require('require-dir')
+  , config      = require('./config/default.js')
+  , util        = require('./util')
 ;
 
-var app = express();
-var api = require('./api');
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
+// Setup basic variables
+var fsq = foursquare(config.foursquare)
+  , app = express()
+  , api = requiredir('./api')
+;
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+// Setup view engine for DUST.js
 app.engine('dust', consolidate.dust);
-
 app.set('view engine', 'dust');
 app.set('views', __dirname + '/view');
 
+// Setup server uses
 app.use(express.compress());
 app.use(express.static(__dirname + '/public'));
 app.use(express.bodyParser());    
     
+// Setup Cookies and Sessions
+app.use(express.cookieParser());
+app.use(express.session({ 
+    secret: 'poptart'
+}));
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
+// Main Page
+app.get('/', function(req, res) {
+    res.render('layout');
+});
+
+// FourSquare Login
+app.get('/login', function(req, res) {
+    res.writeHead(303, { 
+        'location': fsq.getAuthClientRedirectUrl() 
+    });
+    res.end();
+});
+
+// FourSquare Callback
+app.get('/callback', function(req, res) {
+    fsq.getAccessToken({
+        code: req.query.code
+    }, function (error, token) {
+        if (error) {
+            res.send("An error was thrown: " + error.message);
+        } else {
+            req.session.token = token;
+            res.writeHead(303, {
+                'location': '/'
+            });
+            res.end();
+        }
+    });
+});
+
+app.get('/push', function(req, res) {
+    res.writeHead(303, { 
+        'location': fsq.getAuthClientRedirectUrl() 
+    });
+    res.end();
+});
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
 app.get('/:page', function(req, res) {
-    if (api.hasOwnProperty(req.params.page)) {
-        res.format({
-            json: function() {
-                res.header('Vary', 'Accept-Encoding');
-                res.header("Expires", 0); 
+    console.log(req.params.page);
+    console.log(req.session);
     
-                res.json(api[req.params.page].get());            
-            },
-            
-            html: function() {
-                res.render(req.params.page, api[req.params.page].get());
-            }        
-        });
+    if (api.hasOwnProperty(req.params.page)) {
+        res.utilrender = util.render;
+        api[req.params.page].get(req, res, fsq);
     } else {
         res.send('error');
     }
 });
 
-app.get('/', function(req, res) {
-    res.render('layout');
-});
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 function compileDust(path, cur, prev) {
     console.log(path);
@@ -71,5 +121,6 @@ watch.createMonitor('./view', function(monitor) {
     monitor.on("changed", compileDust);    
 });
 
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+
 app.listen(process.env.PORT);
-console.log('started');

@@ -1,2 +1,4 @@
 {"ts":1349658348625,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"lib-cov\n*.seed\n*.log\n*.csv\n*.dat\n*.out\n*.pid\n*.gz\n\npids\nlogs\nresults\n\nnode_modules\nnpm-debug.log"]],"start1":0,"start2":0,"length1":0,"length2":96}]],"length":96}
 {"contributors":[],"silentsave":false,"ts":1349658358123,"patch":[[{"diffs":[[0,"ts\n\n"],[-1,"node_modules\n"],[0,"npm-"]],"start1":66,"start2":66,"length1":21,"length2":8}]],"length":83,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1349734819399,"patch":[[{"diffs":[[0,"pid\n*.gz"],[1,"\n*.bak"],[0,"\n\npids\nl"]],"start1":41,"start2":41,"length1":16,"length2":22}]],"length":89,"saved":false}
+{"ts":1349734858395,"patch":[[{"diffs":[[0,".gz\n"],[-1,"*.bak"],[1,"\nconfig/*.js"],[0,"\n\npi"]],"start1":46,"start2":46,"length1":13,"length2":20}]],"length":96,"saved":false}
