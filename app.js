@@ -4,8 +4,9 @@ var express     = require('express')
   , fs          = require('fs')
   , dust        = require('dustjs-linkedin')
   , foursquare  = require('node-foursquare-2')
+  , categories  = require('./categories')
   , requiredir  = require('require-dir')
-  , config      = require('./config/default.js')
+  , config      = require('./config/default')
   , util        = require('./util')
 ;
 
@@ -114,6 +115,8 @@ fs.readdir('./view', function(err, files) {
         compileDust('./view/' + file);
     });
 });
+
+categories.update(fsq);
 
 watch.createMonitor('./view', function(monitor) {
     monitor.files['*.dust', '*/*'];

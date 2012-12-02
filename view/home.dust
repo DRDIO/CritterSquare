@@ -1,14 +1,76 @@
 <h1>CritterSquare</h1>
 
-<p>
+<section>
     {?user}
-        Welcome back, {.firstName} {.lastName}
+        <p>
+            Welcome back, {user.firstName} {user.lastName}
+        </p>
 
-        {#checkins.items}
-            {.venue}
-        {/checkins.items}
+        {#categories}
+            {.name}
+            {@sep} | {/sep}
+        {/categories}
+
+        {?checkins}
+            <table border="1" cellspacing="0" cellpadding="4">
+                <thead>
+                    <tr>
+                        <th>Monster</th>
+                        <th>Venue</th>
+                        <th>Power</th>
+                        <th>Body</th>
+                        <th>Top Level</th>
+                        <th>Category</th>
+                        <th>Total Checkins</th>
+                        <th>Unique Users</th>
+                        <th>Visits</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {#checkins.items}
+                        <tr>
+                            <td>{venue.monster.name}</td>
+                            <td>{venue.name}</td>
+                            <td>{venue.monster.power}</td>
+                            <td>
+                                {#venue.monster.body}
+                                    {.} {@sep}, {/sep}
+                                {/venue.monster.body}
+                            </td>
+                            <td>
+                                {#venue.top}
+                                    {name}
+
+                                    <img src="{icon.prefix}bg_32{icon.suffix}" />
+                                {/venue.top}
+                            </td>
+                            <td>
+                                {#venue.categories}
+                                    {?primary}
+                                        <strong>{name}</strong>
+                                    {:else}
+                                        {name}
+                                    {/primary}
+    
+                                    <img src="{icon.prefix}bg_32{icon.suffix}" />
+
+                                    {@sep}, {/sep}
+                                {/venue.categories}
+                            </td>
+                            <td>{venue.stats.checkinsCount}</td>
+                            <td>{venue.stats.usersCount}</td>
+                            <td>{beenHere}</td>
+                        </tr>
+                    {/checkins.items}
+
+                </tbody>
+            </table>
+        {:else}
+            <em>No checkins</em>
+        {/checkins}
 
     {:else}
         <a href="/login">Login</a>
     {/user}
-<p>
+<section>

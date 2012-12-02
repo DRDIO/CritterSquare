@@ -1,0 +1,2 @@
+{"ts":1350355856485,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1350355875877,"patch":[[{"diffs":[[1,"exports.foursquare = {\n    'secrets': {\n        'clientId':     '',\n        'clientSecret': '',\n        'redirectUrl':  'http://crittersquare.kevinnuut.c9.io/callback'\n    },\n    'foursquare': {\n        'version': '20121008'\n    },\n    'mongodb': {\n        'url': ''    \n    }\n}"]],"start1":0,"start2":0,"length1":0,"length2":278}]],"length":278,"saved":false}
