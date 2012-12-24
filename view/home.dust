@@ -11,7 +11,7 @@
             {@sep} | {/sep}
         {/categories}
 
-        {?checkins}
+        {?monsters}
             <table border="1" cellspacing="0" cellpadding="4">
                 <thead>
                     <tr>
@@ -19,56 +19,41 @@
                         <th>Venue</th>
                         <th>Power</th>
                         <th>Body</th>
-                        <th>Top Level</th>
-                        <th>Category</th>
-                        <th>Total Checkins</th>
-                        <th>Unique Users</th>
-                        <th>Visits</th>
+                        <th>Type</th>
+                        <th>Creator</th>
                     </tr>
                 </thead>
                 <tbody>
 
-                    {#checkins.items}
+                    {#monsters}
                         <tr>
-                            <td>{venue.monster.name}</td>
-                            <td>{venue.name}</td>
-                            <td>{venue.monster.power}</td>
+                            <td>{name}</td>
+                            <td>{venue}</td>
+                            <td>{power}</td>
                             <td>
-                                {#venue.monster.body}
-                                    {.} {@sep}, {/sep}
-                                {/venue.monster.body}
+                                <ul>
+                                    <li>{body.head}</li>
+                                    <li>{body.core}</li>
+                                    <li>{body.back}</li>
+                                    <li>{body.arms}</li>
+                                    <li>{body.legs}</li>
+                                </ul>
                             </td>
                             <td>
-                                {#venue.top}
-                                    {name}
-
-                                    <img src="{icon.prefix}bg_32{icon.suffix}" />
-                                {/venue.top}
+                                {type}
+                                <img src="{icon}" />
                             </td>
                             <td>
-                                {#venue.categories}
-                                    {?primary}
-                                        <strong>{name}</strong>
-                                    {:else}
-                                        {name}
-                                    {/primary}
-    
-                                    <img src="{icon.prefix}bg_32{icon.suffix}" />
-
-                                    {@sep}, {/sep}
-                                {/venue.categories}
+                                {creator}
                             </td>
-                            <td>{venue.stats.checkinsCount}</td>
-                            <td>{venue.stats.usersCount}</td>
-                            <td>{beenHere}</td>
                         </tr>
-                    {/checkins.items}
+                    {/monsters}
 
                 </tbody>
             </table>
         {:else}
-            <em>No checkins</em>
-        {/checkins}
+            <em>No Critters</em>
+        {/monsters}
 
     {:else}
         <a href="/login">Login</a>

@@ -1,4 +1,5 @@
-var async   = require('async')            // ASYNC used to load multiple sources and wait for all responses
+var async   = require('async')     // ASYNC used to load multiple sources and wait for all responses
+  , promise = require('q')
   , db      = require('../database')
   , cats    = require('../categories')
   , monster = require('../monster')
@@ -43,17 +44,38 @@ exports.get = function(req, res, fsq) {
             }
             
         }, function(err, data) {
+            var promises = [];
+            
             for (var i in data.checkins.items) {
                 var venue = data.checkins.items[i].venue;
                 for (var j in venue.categories) {
                     if (venue.categories[j].primary) {
                         venue.top = cats.findTop(cats.get(), venue.categories[j].id, true);
-                        venue.monster = monster.create(venue.id, venue.top, venue.stats.checkinsCount, venue.stats.usersCount);
+                        promises.push(monster.create(
+                            venue.id, 
+                            venue.top, 
+                            venue.stats.checkinsCount, 
+                            venue.stats.usersCount,
+                            venue.name,
+                            data.user.firstName + ' ' + data.user.lastName
+                        ));
                     }
                 }
             }
+
+            data.monsters = [];
             
-            res.utilrender(req, res, data);
+            promise.allResolved(promises).then(function (promises) {
+                promises.forEach(function (row) {
+                    if (row.isFulfilled()) {
+                        data.monsters.push(row.valueOf());
+                    } else {
+                        console.log(row.valueOf().exception);
+                    }
+                });
+                
+                res.utilrender(req, res, data);
+            });
         }); 
         
     } else {
