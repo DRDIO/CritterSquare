@@ -1,6 +1,8 @@
-var fulllist;
+var fsq = require('./foursquare')
+  , fulllist
+;
 
-exports.update = function(fsq) {
+exports.update = function() {
     fsq.Venues.getCategories(null, null, function(err, data) {
         fulllist = data.categories;
     });

@@ -3,45 +3,24 @@ var async   = require('async')     // ASYNC used to load multiple sources and wa
   , db      = require('../database')
   , cats    = require('../categories')
   , monster = require('../monster')
+  , user    = require('../user')
+  , fsq     = require('../foursquare')
 ;
 
-exports.get = function(req, res, fsq) {
+exports.get = function(req, res) {
     // Check if logged in
     if (req.session.token) {
         // Perform parallel requests to get FSQ information
         async.parallel({
             // Get the user information
-            user: function(callback) {
-                fsq.Users.getUser('self', req.session.token, function(err, data) {
-                    if (err) {
-                        callback(err);
-                    } else {
-                        callback(null, data.user);
-                    }
-                });
+            user: function(callback) { 
+                user.get(callback);
             },
             
             // Get all checkins
             checkins: function(callback) {
-                fsq.Users.getVenueHistory(null, null, req.session.token, function(err, data) {
-                    if (err) {
-                        callback(err);
-                    } else {
-                        callback(null, data.venues);
-                    }
-                });
+                user.getCheckins(callback);
             },
-            
-            // Get the user information
-            badges: function(callback) {
-                fsq.Users.getBadges(null, req.session.token, function(err, data) {
-                    if (err) {
-                        callback(err);
-                    } else {
-                        callback(null, data.badges);
-                    }
-                });
-            }
             
         }, function(err, data) {
             var promises = [];
@@ -73,6 +52,8 @@ exports.get = function(req, res, fsq) {
                         console.log(row.valueOf().exception);
                     }
                 });
+                
+                user.setMonsters(data.monsters);
                 
                 res.utilrender(req, res, data);
             });

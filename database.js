@@ -5,5 +5,6 @@ var mongodb = require('mongojs')
 ;
 
 dbc.critter.ensureIndex({seed: 1}, {unique: true});
+dbc.user.ensureIndex({"monsters.seed": 1}, {unique: true});
 
 module.exports = dbc;

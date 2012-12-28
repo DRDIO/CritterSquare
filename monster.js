@@ -29,10 +29,11 @@ exports.create = function(seed, type, checkinCount, userCount, venue, creator) {
             deferred.reject(err);
             
         } else if (row) {
-            console.log('UPDATE: ' + row.name);
             dbc.critter.update({seed: seed}, {
                 power: power
             });
+            
+            deferred.resolve(row);
             
         } else {
             row = {
@@ -40,7 +41,7 @@ exports.create = function(seed, type, checkinCount, userCount, venue, creator) {
                 name:  exports.getName(),
                 venue: venue,
                 type:  type.name,
-                typeicon: type.icon.prefix + 'bg_32' + type.icon.suffix,
+                typeicon: (type.icon === undefined ? '' : type.icon.prefix + 'bg_32' + type.icon.suffix),
                 body: {
                     head: exports.random(1, 5),
                     core: exports.random(1, 5),
@@ -52,12 +53,11 @@ exports.create = function(seed, type, checkinCount, userCount, venue, creator) {
                 creator: creator
             };
             
-            console.log('INSERT: ' + row.name);
-            
-            dbc.critter.insert(row);
+            dbc.critter.insert(row, function(err, data) {
+                row._id = data._id;
+                deferred.resolve(row);    
+            });
         }
-        
-        deferred.resolve(row);
     });
     
     return deferred.promise;

@@ -3,18 +3,17 @@ var express     = require('express')
   , watch       = require('watch')
   , fs          = require('fs')
   , dust        = require('dustjs-linkedin')
-  , foursquare  = require('node-foursquare-2')
   , categories  = require('./categories')
   , requiredir  = require('require-dir')
   , config      = require('./config/default')
   , util        = require('./util')
+  , fsq         = require('./foursquare')
 ;
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 // Setup basic variables
-var fsq = foursquare(config.foursquare)
-  , app = express()
+var app = express()
   , api = requiredir('./api')
 ;
 
@@ -59,7 +58,9 @@ app.get('/callback', function(req, res) {
         if (error) {
             res.send("An error was thrown: " + error.message);
         } else {
+            fsq.setToken(token);
             req.session.token = token;
+            
             res.writeHead(303, {
                 'location': '/'
             });
@@ -83,7 +84,7 @@ app.get('/:page', function(req, res) {
     
     if (api.hasOwnProperty(req.params.page)) {
         res.utilrender = util.render;
-        api[req.params.page].get(req, res, fsq);
+        api[req.params.page].get(req, res);
     } else {
         res.send('error');
     }
@@ -116,7 +117,7 @@ fs.readdir('./view', function(err, files) {
     });
 });
 
-categories.update(fsq);
+categories.update();
 
 watch.createMonitor('./view', function(monitor) {
     monitor.files['*.dust', '*/*'];
@@ -126,4 +127,4 @@ watch.createMonitor('./view', function(monitor) {
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-app.listen(process.env.PORT);
+app.listen(config.port);
