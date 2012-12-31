@@ -54,9 +54,14 @@ exports.create = function(seed, type, checkinCount, userCount, venue, creator) {
             };
             
             dbc.critter.insert(row, function(err, data) {
-                console.log(data);
-                row._id = data._id;
-                deferred.resolve(row);    
+                if (!err) {
+                    row._id = data._id;
+                    
+                    console.log('checking insert');
+                    console.log(row);
+                    console.log(data);
+                    deferred.resolve(row);
+                }
             });
         }
     });
