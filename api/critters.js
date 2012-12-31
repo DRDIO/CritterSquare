@@ -3,7 +3,7 @@ var user    = require('../user')
 
 exports.get = function(req, res) {
     if (req.session.token !== undefined) {
-        user.getCurrent(req.session.token, false, function(err, data) {
+        user.getCurrent(req.session.token, true, function(err, data) {
             res.utilrender(req, res, {
                 user: data
             }); 

@@ -2,3 +2,4 @@
 {"contributors":[],"silentsave":false,"ts":1356883570485,"patch":[[{"diffs":[[1,"var socketio = require('socket.io')\n  , io\n;\n\nexports.init = function(config, app) {\n    io = socketio.listen(app);    \n    \n    return io;\n}\n\nexports.get = function() {\n    return io;\n}"]],"start1":0,"start2":0,"length1":0,"length2":186}]],"length":186,"saved":false}
 {"ts":1356883760916,"patch":[[{"diffs":[[0,"ion("],[1,"app, "],[0,"config"],[-1,", app"],[0,") {\n"]],"start1":66,"start2":66,"length1":19,"length2":19}]],"length":186,"saved":false}
 {"contributors":[],"silentsave":false,"ts":1356909672664,"patch":[[{"diffs":[[0,"p);    \n"],[-1,"    \n"],[0,"    retu"]],"start1":112,"start2":112,"length1":21,"length2":16}]],"length":181,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1356930113848,"patch":[[{"diffs":[[0,"sten(app"],[1,", config"],[0,");    \n "]],"start1":105,"start2":105,"length1":16,"length2":24}]],"length":189,"saved":false}

@@ -35,7 +35,7 @@ exports.pull = function(token, callback) {
         var promises = [];
         
         // Update user information in database
-        user.update(data.user.id, data.user.firstName + ' ' + data.user.lastName);
+        user.updateCurrent(token, data.user.firstName + ' ' + data.user.lastName);
             
         // Search through checkins and stores as critters    
         for (var i in data.checkins.items) {
@@ -58,16 +58,16 @@ exports.pull = function(token, callback) {
         data.monsters = [];
         
         // Wait until everything is created then update user table
-        promise.allResolved(promises).then(function (promises) {
-            promises.forEach(function (row) {
+        promise.allResolved(promises).then(function(promises) {
+            promises.forEach(function(row) {
                 if (row.isFulfilled()) {
-                    data.monsters.push(row.valueOf());
+                    data.monsters.push(row.valueOf()._id);
                 } else {
                     console.log(row.valueOf().exception);
                 }
             });
             
-            user.setMonsters(data.monsters);
+            user.setMonsters(token, data.monsters);
             
             callback(null, data);
         });

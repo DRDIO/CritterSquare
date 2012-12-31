@@ -3,7 +3,7 @@ var socketio = require('socket.io')
 ;
 
 exports.init = function(app, config) {
-    io = socketio.listen(app);    
+    io = socketio.listen(app, config);    
     return io;
 }
 
