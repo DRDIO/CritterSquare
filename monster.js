@@ -1,8 +1,9 @@
-var promise = require('q')
-  , dbc     = require('./database').get()
-  , prefix  = ['Dali', 'Pika', 'Laga', 'Sora', 'Jorn', 'Chax']
-  , affix   = ['do', 're', 'me', 'fa', 'so', 'la', 'te']
-  , suffix  = ['mon', 'digi', 'frag', 'kron', 'alba']
+var promise  = require('q')
+  , database = require('./database')
+  , dbc      = database.get()
+  , prefix   = ['Dali', 'Pika', 'Laga', 'Sora', 'Jorn', 'Chax']
+  , affix    = ['do', 're', 'me', 'fa', 'so', 'la', 'te']
+  , suffix   = ['mon', 'digi', 'frag', 'kron', 'alba']
 ;
 
 exports.random = function(min, max) {
@@ -29,14 +30,21 @@ exports.create = function(seed, type, checkinCount, userCount, venue, creator) {
             deferred.reject(err);
             
         } else if (row) {
-            dbc.critter.update({seed: seed}, {
-                power: power
-            });
-            
+            if (row.power != power) {
+                console.log('UPDATING ' + row.name);
+
+                dbc.critter.update({seed: seed}, {
+                    $set: {
+                        power: power
+                    }
+                });
+            }
+
             deferred.resolve(row);
             
         } else {
             row = {
+                _id:   database.getId(),
                 seed:  seed,
                 name:  exports.getName(),
                 venue: venue,
@@ -52,17 +60,11 @@ exports.create = function(seed, type, checkinCount, userCount, venue, creator) {
                 power: power,
                 creator: creator
             };
+
+            console.log('INSERT ' + row.name);
             
-            dbc.critter.insert(row, function(err, data) {
-                if (!err) {
-                    row._id = data._id;
-                    
-                    console.log('checking insert');
-                    console.log(row);
-                    console.log(data);
-                    deferred.resolve(row);
-                }
-            });
+            dbc.critter.insert(row);
+            deferred.resolve(row);
         }
     });
     

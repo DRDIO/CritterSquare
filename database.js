@@ -16,3 +16,7 @@ exports.init = function(config) {
 exports.get = function() {
     return dbc;
 }
+
+exports.getId = function() {
+    return new mongodb.ObjectId();
+}
