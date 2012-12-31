@@ -1,10 +1,17 @@
 // Cache db setup so it can be required from any API page
 var mongodb = require('mongojs')
-  , config  = require('./config/default')
-  , dbc     = mongodb(config.mongodb.url, config.mongodb.collections)
+  , dbc
 ;
 
-dbc.critter.ensureIndex({seed: 1}, {unique: true});
-dbc.user.ensureIndex({"monsters.seed": 1}, {unique: true});
+exports.init = function(config) {
+    dbc = mongodb(config.url, config.collections);
 
-module.exports = dbc;
+    dbc.critter.ensureIndex({seed: 1}, {unique: true});
+    dbc.user.ensureIndex({"monsters.seed": 1}, {unique: true});
+    
+    return dbc;
+}
+
+exports.get = function() {
+    return dbc;
+}

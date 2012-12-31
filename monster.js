@@ -1,5 +1,5 @@
 var promise = require('q')
-  , dbc     = require('./database')
+  , dbc     = require('./database').get()
   , prefix  = ['Dali', 'Pika', 'Laga', 'Sora', 'Jorn', 'Chax']
   , affix   = ['do', 're', 'me', 'fa', 'so', 'la', 'te']
   , suffix  = ['mon', 'digi', 'frag', 'kron', 'alba']

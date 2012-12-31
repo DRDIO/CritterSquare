@@ -1,16 +1,12 @@
 var foursquare  = require('node-foursquare-2')
-  , config      = require('./config/default.js')
-  , token       = ''
+  , fsq
 ;
 
-var fsq = foursquare(config.foursquare);
-
-fsq.setToken = function(sessionToken) {
-    token = sessionToken;
+exports.init = function(config) {
+    fsq = foursquare(config);
+    return fsq;
 }
 
-fsq.getToken = function() {
-    return token;
+exports.get = function() {
+    return fsq;
 }
-
-module.exports = fsq;

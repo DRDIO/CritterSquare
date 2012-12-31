@@ -1,5 +1,3 @@
-<h1>CritterSquare</h1>
-
 <section>
     {?user}
         <p>

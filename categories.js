@@ -1,4 +1,4 @@
-var fsq = require('./foursquare')
+var fsq = require('./foursquare').get()
   , fulllist
 ;
 
