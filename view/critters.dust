@@ -16,7 +16,7 @@
 
                     {#monsters}
                         <tr>
-                            <td>{name}</td>
+                            <td>{monsters.name}</td>
                             <td>{venue}</td>
                             <td>{power}</td>
                             <td>

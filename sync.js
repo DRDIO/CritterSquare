@@ -67,6 +67,8 @@ exports.pull = function(token, callback) {
                 }
             });
             
+            console.log(token);
+            
             user.setMonsters(token, data.monsters);
             
             callback(null, data);
