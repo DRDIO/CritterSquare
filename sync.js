@@ -35,7 +35,7 @@ exports.pull = function(token, callback) {
         var promises = [];
         
         // Update user information in database
-        user.updateCurrent(token, data.user.firstName + ' ' + data.user.lastName);
+        user.updateCurrent(data.user.id, token, data.user.firstName + ' ' + data.user.lastName);
             
         // Search through checkins and stores as critters    
         for (var i in data.checkins.items) {

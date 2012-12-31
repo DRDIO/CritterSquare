@@ -31,10 +31,11 @@ exports.getCurrent = function(token, getCritters, callback) {
     });
 }
 
-exports.updateCurrent = function(token, name) {
+exports.updateCurrent = function(fsid, token, name) {
     db.user.update({ 
-        token: token
+        fsid: fsid
     }, {
+        fsid:   fsid,
         token:  token,
         name:   name,
     }, { 

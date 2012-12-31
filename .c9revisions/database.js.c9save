@@ -28,3 +28,4 @@
 {"ts":1356930731110,"patch":[[{"diffs":[[0,"onsters."],[-1,"see"],[1,"_i"],[0,"d\": 1}, "]],"start1":383,"start2":383,"length1":19,"length2":18}]],"length":486,"saved":false}
 {"ts":1356930879506,"patch":[[{"diffs":[[0,"});\n"],[-1,"    dbc.user.ensureIndex({\"fsid\": 1}, {unique: true});\n"],[0,"    "]],"start1":240,"start2":240,"length1":63,"length2":8}]],"length":431,"saved":false}
 {"ts":1356931893089,"patch":[[{"diffs":[[0,"});\n"],[-1,"    dbc.user.ensureIndex({\"monsters._id\": 1}, {unique: true});\n"],[0,"    "]],"start1":296,"start2":296,"length1":71,"length2":8}]],"length":368,"saved":false}
+{"contributors":[],"silentsave":false,"ts":1356971699916,"patch":[[{"diffs":[[0,"ue: true});\n"],[1,"    dbc.user.ensureIndex({\"fsid\": 1},  {unique: true});\n"],[0,"    dbc.user"]],"start1":232,"start2":232,"length1":24,"length2":80}]],"length":424,"saved":false}
