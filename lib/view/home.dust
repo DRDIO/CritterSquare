@@ -1,0 +1,10 @@
+<section>
+    {#user}
+        <p>
+            Welcome back, {name}
+        </p>
+
+    {:else}
+        <a href="/login">Login</a>
+    {/user}
+<section>

@@ -1,0 +1,47 @@
+<section>
+    {#user}
+        {?monsters}
+            <table border="1" cellspacing="0" cellpadding="4">
+                <thead>
+                    <tr>
+                        <th>Monster</th>
+                        <th>Power</th>
+                        <th>Body</th>
+                        <th>Icon</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    {#monsters}
+                        <tr>
+                            <td>
+                                <h2>{.name}</h2>
+                                <h3>{venue}</h3>
+				<h4>{type}</h4>
+                            </td>
+                            <td>{power}</td>
+                            <td>
+                                <ul>
+                                    <li>{body.head}</li>
+                                    <li>{body.core}</li>
+                                    <li>{body.back}</li>
+                                    <li>{body.arms}</li>
+                                    <li>{body.legs}</li>
+                                </ul>
+                            </td>
+                            <td>
+                                <img src="{typeicon}" />
+                            </td>
+                        </tr>
+                    {/monsters}
+
+                </tbody>
+            </table>
+        {:else}
+            <em>No Critters</em>
+        {/monsters}
+
+    {:else}
+        <a href="/login">Login</a>
+    {/user}
+<section>

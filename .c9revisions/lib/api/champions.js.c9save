@@ -1,0 +1,3 @@
+{"ts":1356933180114,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
+{"contributors":[],"silentsave":false,"ts":1356933189907,"patch":[[{"diffs":[[1,"var user    = require('../user')\n;\n\nexports.get = function(req, res) {\n    if (req.session.token !== undefined) {\n        user.getCurrent(req.session.token, function(err, data) {\n            res.utilrender(req, res, {\n                user: data\n            }); \n        });\n    } else {\n        res.utilrender(req, res); \n    }\n};"]],"start1":0,"start2":0,"length1":0,"length2":330}]],"length":330,"saved":false}
+{"ts":1356933282877,"patch":[[{"diffs":[[0,"n.token,"],[1," true,"],[0," functio"]],"start1":148,"start2":148,"length1":16,"length2":22}]],"length":336,"saved":false}
