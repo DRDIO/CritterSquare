@@ -1,4 +1,3 @@
-CritterSquare
-=============
+# crittersails
 
-Demo 4Square Mashup
+a [Sails](http://sailsjs.org) application
