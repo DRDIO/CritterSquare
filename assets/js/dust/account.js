@@ -1,0 +1,1 @@
+(function(){dust.register("account",body_0);function body_0(chk,ctx){return chk.write("<h1>").reference(ctx.get("title"),ctx,"h").write("</h1><p>Account page for ").reference(ctx.get("user"),ctx,"h").write("</p>");}return body_0;})();

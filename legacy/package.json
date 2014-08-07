@@ -1,0 +1,18 @@
+{
+    "name":           "critter-square",
+    "description":    "hello world test app",
+    "version":        "0.0.1",
+    "private":        false,
+    
+    "dependencies": {
+        "express":              "3.0.0rc4",
+        "mongojs":              "0.4.5",
+        "node-foursquare-2":    "0.1.5",
+        "consolidate":          "0.4.0",
+        "dustjs-linkedin":      "1.1.0",
+        "require-dir":          "0.1.0",
+        "async":                "0.1.22",
+        "q":                    "0.8.11",
+        "socket.io":            "0.9.13"
+    }
+}

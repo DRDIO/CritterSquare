@@ -1,0 +1,7 @@
+header {
+  background: #333;
+  color: #eee;
+}
+header ul li {
+  float: left;
+}
