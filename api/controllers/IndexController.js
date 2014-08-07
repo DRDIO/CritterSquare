@@ -1,3 +1,5 @@
+var rest = require('restler');
+
 /**
  * Authentication Controller
  *
@@ -10,13 +12,16 @@ var IndexController = {
         if (!req.user) {
             res.redirect('/login');
         } else {
-            User.findOne({id: req.user.id}, function(err, user) {
-                console.log(req.user);
-                console.log(err);
-                console.log(user);
-                return res.view('index/index', {
-                    token: passport[0].tokens.accessToken,
-                    user: req.user
+            console.log(req.user);
+            Passport.findOne({user: req.user.id}, function(err, passport) {
+                var url = 'https://api.foursquare.com/v2/users/self/checkins?v=20140807&oauth_token=' + passport.tokens.accessToken;
+                rest.get(url).on('complete', function(data) {
+                   console.log(data.response.checkins.items);
+
+                    return res.view('index/index', {
+                        token: passport.tokens.accessToken,
+                        user: req.user
+                    });
                 });
             });
         }
