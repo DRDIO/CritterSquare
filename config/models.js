@@ -19,5 +19,5 @@ module.exports.models = {
   ***************************************************************************/
 
   connection: 'csMongoServer',
-    migrate: 'safe'
+    migrate: 'drop'
 };
